@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../Services/Weather_Services.dart';
+
 class SearchPage extends StatelessWidget {
   // const SearchPage({super.key});
   String? cityName;
@@ -50,6 +52,12 @@ class SearchPage extends StatelessWidget {
                         BoxShadow(color: Colors.black38, offset: Offset(0, 2))
                       ]),
                   child: TextField(
+                    
+                      onSubmitted: (data) {
+                        cityName = data;
+                         WeatherService service = WeatherService();
+                   service.getWeatherService(cityName: cityName!);
+                      },
                       decoration: InputDecoration(
                           focusColor: Colors.black,
                           contentPadding: EdgeInsets.symmetric(
